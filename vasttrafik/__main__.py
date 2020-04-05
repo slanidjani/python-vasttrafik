@@ -87,7 +87,7 @@ def print_trip_table(document):
                 dest['name'],
                 dest['track'],
                 dest['rtTime'] if 'rtTime' in dest else dest['time'],
-                ]
+            ]
             table.append(row)
             first_trip_in_alt = False
     print(tabulate.tabulate(table, headers))
@@ -229,7 +229,7 @@ def main():
         value = getattr(args, attribute)
         if not value or value.isdigit():
             return
-        setattr(args, attribute, planner.location_name(value)[0]['id'])
+        setattr(args, attribute, planner.get_stops_by_name(value)[0]['id'])
 
     # Convert stop names to id if needed
     name_to_id('id')
@@ -261,24 +261,24 @@ def main():
     if args.service == 'location':
         if args.location_method == 'allstops':
             print_table(
-                planner.location_allstops(),
+                planner.get_all_stops(),
                 ('id', 'ID'),
                 ('name', 'Name'),
                 ('track', 'Track'))
         if args.location_method == 'name':
             print_table(
-                planner.location_name(args.name),
+                planner.get_stops_by_name(args.name),
                 ('id', 'ID'),
                 ('name', 'Name'))
         if args.location_method == 'nearbystops':
             print_table(
-                planner.location_nearbystops(args.lat, args.lon),
+                planner.get_stops_by_nearby_stops(args.lat, args.lon),
                 ('id', 'ID'),
                 ('name', 'Name'),
                 ('track', 'Track'))
         if args.location_method == 'nearbyaddress':
             print_table(
-                [planner.location_nearbyaddress(args.lat, args.lon)],
+                [planner.get_stops_by_nearby_address(args.lat, args.lon)],
                 ('name', 'Name'),
                 ('lon', 'Longitude'),
                 ('lat', 'Latitude'))
@@ -286,7 +286,7 @@ def main():
     # ARRIVALBOARD
     elif args.service == 'arrival':
         print_table(
-            planner.arrivalboard(
+            planner.get_arrival_board_at_stop(
                 args.id,
                 date=date,
                 direction=args.direction),
@@ -299,7 +299,7 @@ def main():
     # DEPARTUREBOARD
     elif args.service == 'departure':
         print_table(
-            planner.departureboard(
+            planner.get_departure_board_at_stop(
                 args.id,
                 date=date,
                 direction=args.direction),
@@ -312,7 +312,7 @@ def main():
     # TRIP
     elif args.service == 'trip':
         print_trip_table(
-            planner.trip(
+            planner.get_trip_from_origin_dest_id(
                 args.originId,
                 args.destinationId,
                 date=date))
