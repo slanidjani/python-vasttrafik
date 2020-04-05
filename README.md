@@ -6,7 +6,7 @@
 usage: vtjp [-h] [-k [KEY]] [-s [SECRET]]
             {store,location,arrival,departure,trip} ...
 
-Västtrafik journy planner (vtjp)
+Västtrafik journey planner (vtjp)
 
 positional arguments:
   {store,location,arrival,departure,trip}
@@ -33,7 +33,7 @@ optional arguments:
 ```
 import vasttrafik
 
-jp = vasttrafik.JournyPlanner(
+jp = vasttrafik.JourneyPlanner(
     key='my_key',
     secret='my_secret')
 

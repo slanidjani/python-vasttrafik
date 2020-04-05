@@ -6,7 +6,7 @@ setup(
     name='vtjp',
     version='0.1.14',
     description='Västtrafik API.',
-    long_description='Python implementation of Västtrafik Journy planner'
+    long_description='Python implementation of Västtrafik Journey planner'
                      '(vtjp) public API.',
     url='https://github.com/persandstrom/python-vasttrafik',
     author='Per Sandström',

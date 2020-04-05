@@ -12,7 +12,7 @@ except ImportError:
 
 import os
 import tabulate
-from vasttrafik import JournyPlanner
+from vasttrafik import JourneyPlanner
 
 
 def get_config_path():
@@ -100,7 +100,7 @@ def main():
     key = config.get('credentials', 'key')
     secret = config.get('credentials', 'secret')
     parser = argparse.ArgumentParser(
-        description=u'Västtrafik journy planner (vtjp)')
+        description=u'Västtrafik journey planner (vtjp)')
     parser.add_argument(
         '-k',
         '--key',
@@ -218,7 +218,7 @@ def main():
 
     args = parser.parse_args()
 
-    planner = JournyPlanner(
+    planner = JourneyPlanner(
         key=args.key,
         secret=args.secret)
 

@@ -1,2 +1,2 @@
-from .journy_planner import JournyPlanner
-from .journy_planner import Error
+from .journey_planner import JourneyPlanner
+from .journey_planner import Error

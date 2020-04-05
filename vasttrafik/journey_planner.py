@@ -28,8 +28,8 @@ def _get_node(response, *ancestors):
     return document
 
 
-class JournyPlanner:
-    """ Journy planner class"""
+class JourneyPlanner:
+    """ Journey planner class"""
 
     def __init__(self, key, secret, expiery=59):
         self._key = key
